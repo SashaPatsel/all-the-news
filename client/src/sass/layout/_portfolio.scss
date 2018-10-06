@@ -1,0 +1,44 @@
+.transition {
+  height: 15rem;
+  background-image: linear-gradient(to bottom, #1a6dbb,
+   white);
+   margin-top: -8rem;
+
+
+}
+
+.portfolio {
+
+
+  margin-bottom: 10rem;
+
+  &__heading {
+    display: inline-block;
+    font-size: 8rem;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 3rem;
+    background-image: linear-gradient(to left, $color-secondary, $color-primary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: 2rem;
+
+    text-transform: uppercase;
+    text-shadow: 0 1rem 2rem rgba(0,0,0,.3);
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+
+    &-sub {
+      font-size: 5rem;
+    }
+
+  }
+
+
+
+}
+
+
+

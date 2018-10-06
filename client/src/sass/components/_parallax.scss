@@ -1,0 +1,15 @@
+.parallax {
+  background-image: linear-gradient(
+    to right bottom,
+  rgba($color-primary, 1), 
+  rgba($color-secondary, 1)),
+  url("/assets/images/beach.jpeg");
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: top;
+  background-blend-mode: screen;
+  position: fixed;
+  z-index: -2;
+}

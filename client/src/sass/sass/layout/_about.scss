@@ -1,0 +1,109 @@
+.about {
+  padding: 15rem 0;
+
+  background-image: linear-gradient(to bottom left, $color-primary, $color-secondary);
+
+  // background-size: cover;
+  transform: skewY(5deg);
+
+  // position: relative;
+
+  @media (max-width: 900px) {
+    // padding: 2rem 0;
+  }
+
+  //selects all direct children
+  & > * {
+    transform: skewY(-5deg);
+  }
+
+  &__heading-main {
+
+    font-size: 7rem;
+    text-align: center;
+    color: white;
+    letter-spacing: 2rem;
+    text-transform: uppercase;
+    z-index: 4;
+
+    @include responsive(t-port) {
+
+    }
+
+  }
+
+  &__portrait {
+    height: 20rem;
+    width: 20rem;
+    object-fit: cover;
+    
+
+    border-radius: 200px;
+    border: solid white 3px;
+    background-image: linear-gradient(to top, rgba($color-primary, .7), rgba($color-secondary, .7));
+
+    margin: auto;
+    display: block;
+  }
+
+  &__heading-sub {
+
+    &--1 {
+      font-size: 4rem;
+      text-align: center;
+      color: white;
+      letter-spacing: 1.5rem;
+      text-transform: uppercase;
+      margin-top: 5rem;
+    }
+
+    &--2 {
+      font-size: 4rem;
+      text-align: center;
+      color: white;
+      letter-spacing: 1.8rem;
+      text-transform: uppercase;
+      margin-top: 5rem;
+    }
+  }
+
+  &__blrb {
+    color: white;
+    transform:  skewY(-5deg);
+    width: 50%;
+    font-size: 2rem;
+    line-height: 1.8;
+    margin: 2rem auto;
+    line-height: 2.3;
+    letter-spacing: 1.3px;
+
+    text-shadow: 0 1rem 1rem rgba(0,0,0,.4);
+     
+    p {
+
+      &:not(:last-child) {
+        margin-bottom:4rem;
+      }
+
+    }
+
+    a {
+        color: $color-link;
+        cursor: pointer;
+        text-decoration: none;
+
+        &:hover {
+          color: rgba($color-primary-dark, 1) ;
+        }
+      }
+
+      &--sig {
+        text-align: right;
+      }
+
+
+
+  }
+
+
+}

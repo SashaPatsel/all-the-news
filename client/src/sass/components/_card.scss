@@ -1,0 +1,236 @@
+.card {
+  // FUNCTIONALITY
+  perspective: 150rem;
+  //for firefox
+  -moz-perspective: 150rem;
+  position: relative;
+  height: 52rem;
+  
+
+  &__side {
+      height: 52rem;
+      transition: all .8s ease;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 3px;
+      overflow: hidden;
+      box-shadow: 0 1.5rem 4rem rgba(0,0,0, .15);
+
+      &--front {
+          background-color: white;
+      }
+
+      &--back {
+          transform: rotateY(180deg);
+
+          &-1 {
+            background-image: linear-gradient(to right bottom, $color-primary, $color-secondary);
+          }
+
+          &-2 {
+            background-image: linear-gradient(to right bottom, $color-primary, $color-secondary);
+          }
+
+          &-3 {
+            background-image: linear-gradient(to right bottom, $color-primary, $color-secondary);
+          }
+      }
+  }
+
+
+  &:hover &__side--front {
+      transform: rotateY(-180deg);
+  }
+
+  &:hover &__side--back {
+      transform: rotateY(0);
+  }
+
+  //FRONT SIDE STYLING
+  &__picture {
+    background-size: cover;
+    height: 23rem;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+
+    &--1 {
+      //image located relative to style.css (that's where the code's being compiled)
+      // background-image:  url("assets/images/seatswap-demo.png");
+      background-position-x: 40%;
+    }
+
+    // &--2 {
+    //   background-image: linear-gradient(to right bottom, blue, cyan) ;
+    // }
+
+    &--3 {
+      // background-image:  url("assets/images/bamazon-demo.gif") ;
+
+    }
+
+    &--4 {
+
+      // background-image:  url("assets/images/demo.gif");
+    }
+
+    &--5 {
+      // background-image:  url("assets/images/hq-demo.png") ;
+      
+    }
+
+    &--6 {
+      // background-image:  url("assets/images/ucbx.jpeg") ;
+
+    }
+
+    &--11 {
+      // background-image:  url("assets/images/rate-a-restaurant.png") ;
+    }
+
+    &--12 {
+      // background-image:  url("assets/images/hogwarts.png") ;
+    }
+
+
+  }
+
+  &__heading {
+    font-size: 2.8rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: white;
+    text-align: right;
+    position: absolute;
+    top: 12rem;
+    right: 3rem;
+    width: 45%;
+  }
+
+  &__heading-span {
+    padding: 1rem 1.5rem;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    padding: 1rem 1.5rem;
+
+    &--1 {
+      background-image: linear-gradient(to right bottom,  rgba(#055197, .85), 
+        rgba(#1282A2, .85));
+    }
+
+    &--2 { 
+      background-image: linear-gradient(to right bottom,  rgba(blue, .85), 
+        rgba(cyan, .85));
+    }
+
+    &--3 {
+      background-image: linear-gradient(to right bottom,  rgba(purple, .85), 
+        rgba(violet, .85));
+    }
+
+  }
+
+  &__about {
+    padding: 2rem;
+
+    &--name {
+      font-size: 2.5rem;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    &--desc {
+      font-size: 1.4rem !important;;
+      color: black !important;
+    }
+  }
+  
+
+
+  //BACK-SIDE STYLING
+  &__details {
+    padding: 2rem;
+    color: white;
+
+    &--stack {
+      font-size: 3rem;
+      text-align: center;
+      letter-spacing: .5rem;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    &--logo {
+      height: 5rem;
+      width: 5rem;
+      transform: translateY(-25%);
+      position: absolute;
+      left: 0;
+      
+    }
+
+    ul {
+      list-style: none;
+      width: 80%;
+      margin: 0 auto;
+
+      li {
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 1.5rem;
+        position: relative;
+        text-transform: uppercase;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid rgb(200,200,200);
+        }
+      }
+    }
+
+    &--icon {
+
+      &-gh {
+        position: absolute;
+        bottom: 1rem;
+        left: 25%;
+        transform: translateX(-25%);
+      }
+
+      &-hr {
+        position: absolute;
+        bottom: 1.3rem;
+        left: 75%;
+        transform: translateX(-75%);
+
+        i {
+          font-size: 5rem;
+        color: black;
+     
+          &:hover {
+            transform: scale(1.2);
+          }
+        }
+      }
+
+      &-img {
+        height: 5rem;
+        width: 5rem;
+      }
+
+      &-img:hover {
+        transform: scale(1.1);
+      }
+
+    }
+
+  }
+
+  // SMALL CARDS
+  &-sm {
+
+  }
+
+}

@@ -1,0 +1,76 @@
+.nav {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  height: 8rem;
+  width: 100vw;
+  color: $color-secondary;
+
+
+
+  &__logo-box {
+    position: relative;
+    top: .5rem;
+    left: 2rem;
+    height: 7rem;
+    width: 7rem;
+    border-radius: 100%;
+    background: #2d50a3;
+    display: inline-block;
+  }
+  
+  &__logo {
+    height: 5rem;
+    position: absolute;
+    top: 1rem;
+    left: 1.4rem;
+    z-index: 2;
+  }
+
+  &__logo-wrap {
+    height: 4.7rem;
+    width: 3.9rem;
+    // background: white;
+    background-image: linear-gradient(to left, $color-secondary, $color-primary-light);
+    position: absolute;
+    z-index: 0;
+    top: 1rem;
+    left: 1.5rem;
+  }
+
+  &__links,
+  &:link,
+  &:visited {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  ul {
+    position: absolute;
+    right: 2rem;
+    font-size: 2.6rem;
+    top:50%;
+    transform: translate(0, -50%);
+
+    li {
+      display: inline;
+
+      &:hover {
+        top: 40%;
+        text-shadow: 0 1rem 4rem rgba(0,0,0,.6);
+        color: white;
+        transition: .2s;
+      }
+
+      &:not(:last-child) {
+        padding: 0 1rem;
+        border-right: solid white 2px;
+      }
+
+      &:last-child {
+        margin-left: 1rem;
+      }
+    }
+  }
+
+}
