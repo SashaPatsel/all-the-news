@@ -5,6 +5,7 @@ import logo from './beary2.png';
 import Panel from './components/Panel'
 import Input from './components/Input'
 import Button from './components/Button'
+import Story from './components/Story'
 
 import './App.css';
 
@@ -18,7 +19,15 @@ class App extends Component {
   
   componentWillMount(){
     this.checkAuth();
-    API.getNews().then(news => console.log(news))
+    API.getNews().then(news => {
+      console.log(news)
+      this.setState({
+      ["stories"]: [...news.data]
+      }, () => {
+        this.setState({["refresh"]: true}) 
+      console.log(this.state.stories)
+    })
+    })
   }
 
   checkAuth(){
@@ -107,19 +116,27 @@ class App extends Component {
     errorWrap.classList.remove("error");
   }
 
-  renderPanelContent(){
-    if(this.state.isLoggedIn){
-      return(
-        <div>
+
+  render() {
+    return (
+
+      // <Router>
+      //   <Switch>
+      //   <Route exact path="/" component={Home} />
+      //   <Route exact path="/saved" component={Saved} />
+      //   </Switch> 
+      // </Router>  
+      <div className="App">
+       {this.state.stories ? this.state.stories.map(story => (
+         <Story headline={story.title} img={story.urlToImage} description={story.description}/>
+       )) : <p>ey</p>
+      }
+
+        {this.state.isLoggedIn ?  <div>
         <h3>Welcome to your account panel.</h3>
         <h4>♡</h4>
         <Button float="none" handleBtnClick={this.handlelogout.bind(this)}>logout</Button>
-        </div>
-        )
-    }else {
-      // console.log(this.state.isLoggedIn)
-      return(
-        <div>
+        </div> :  <div>
           <form ref="submitForm" onClick={this.resetError.bind(this)}>
             <p id="form-error"></p>
             <Input elementID="user-email" inputType="email" placeholder="email" img="email" required={true} size="3"/>
@@ -128,23 +145,8 @@ class App extends Component {
             <Button handleBtnClick={this.handleSubmitAccess.bind(this)} float="right">SIGNUP</Button>
 
           </form>
-        </div>
-      )
-    }
-  }
+        </div>}
 
-  render() {
-    return (
-      <div className="App">
-        <section className="App-skew">
-        </section>
-        <header>
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">USER ACCOUNT Demo</h1>
-        </header>
-       <Panel>
-        {this.renderPanelContent()}
-       </Panel>
       </div>
     );
   }

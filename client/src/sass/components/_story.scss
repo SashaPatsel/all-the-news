@@ -1,0 +1,10 @@
+.story {
+  height: 30rem;
+  width: 30rem;
+  border: solid 2px black;
+
+  &__img {
+    max-height: 20rem;
+    max-width: 20rem;
+  }
+}
