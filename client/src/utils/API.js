@@ -1,3 +1,5 @@
+import axios from "axios"
+
 export default {
 	checkAuth: function(){
 		return fetch("/api/user/auth", {
@@ -34,13 +36,8 @@ export default {
       credentials: 'include',
       mode: 'cors'
     });
-	}
-	
-	// getCookies: function(){
-	// 	const value = document.cookie;
-	// 	let parts = value.split("user_email" + "; ");
-	// 	parts = parts[0].split("=");
-	// 	return decodeURIComponent(parts[1]);
-	// },
-	
+    }, 
+    getNews: function() {
+       return axios.get("/api/news")
+    }
 }

@@ -18,6 +18,7 @@ class App extends Component {
   
   componentWillMount(){
     this.checkAuth();
+    API.getNews().then(news => console.log(news))
   }
 
   checkAuth(){
