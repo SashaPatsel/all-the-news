@@ -17,7 +17,8 @@ import API from "./utils/API";
 class App extends Component {
   state = {
     isLoggedIn: false,
-    source: "bleacher-report"
+    source: "bleacher-report",
+    currentFocus: 0
   }
 
   
@@ -37,6 +38,7 @@ class App extends Component {
 
   handleChange = async e => {
     this.autocomplete(e.target, sources);
+    console.log(e.target.value)
   }
 
   checkAuth(){
@@ -128,8 +130,7 @@ class App extends Component {
 
   // AUTOCOMPLETE =========================
 
-  autocomplete(inp, arr) {
-    console.log(inp, arr)
+  autocomplete = (inp, arr) => {
     /*the autocomplete function takes two arguments,
     the text field element and an array of possible autocompleted values:*/
     var currentFocus;
@@ -171,20 +172,22 @@ class App extends Component {
     });
     /*execute a function presses a key on the keyboard:*/
     inp.addEventListener("keydown", function(e) {
+      
         var x = document.getElementById(this.id + "autocomplete-list");
+        console.log(currentFocus)
         if (x) x = x.getElementsByTagName("div");
         if (e.keyCode == 40) {
           /*If the arrow DOWN key is pressed,
           increase the currentFocus variable:*/
           currentFocus++;
           /*and and make the current item more visible:*/
-          addActive(x);
+          addActive(x, currentFocus);
         } else if (e.keyCode == 38) { //up
           /*If the arrow UP key is pressed,
           decrease the currentFocus variable:*/
           currentFocus--;
           /*and and make the current item more visible:*/
-          addActive(x);
+          addActive(x, currentFocus);
         } else if (e.keyCode == 13) {
           /*If the ENTER key is pressed, prevent the form from being submitted,*/
           e.preventDefault();
@@ -194,9 +197,10 @@ class App extends Component {
           }
         }
     });
-    function addActive(x) {
+    function addActive(x, currentFocus) {
       /*a function to classify an item as "active":*/
       if (!x) return false;
+      console.log(x, currentFocus)
       /*start by removing the "active" class on all items:*/
       removeActive(x);
       if (currentFocus >= x.length) currentFocus = 0;
