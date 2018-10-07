@@ -1,4 +1,4 @@
-[ 'abc-news',
+const sources = [ 'abc-news',
   'abc-news-au',
   'aftenposten',
   'al-jazeera-english',
@@ -135,3 +135,5 @@
   'wirtschafts-woche',
   'xinhua-net',
   'ynet']
+
+  export default sources

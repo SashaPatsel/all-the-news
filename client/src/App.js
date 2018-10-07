@@ -33,6 +33,10 @@ class App extends Component {
     })
   }
 
+  handleChange = e => {
+    const {name, value} = e.target
+  }
+
   checkAuth(){
    API.checkAuth()
     .then(data => {return data.json()})
@@ -129,7 +133,12 @@ class App extends Component {
       //   <Route exact path="/saved" component={Saved} />
       //   </Switch> 
       // </Router>  
+
+      
+
       <div className="App">
+
+      <Input type="text" onChange={() => this.handleChange()}/>
        {this.state.stories ? this.state.stories.map(story => (
          <Story headline={story.title} img={story.urlToImage} description={story.description}/>
        )) : <p>ey</p>
