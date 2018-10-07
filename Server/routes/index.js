@@ -8,7 +8,7 @@ const passportRoutes = require("./passport/passport.js");
 router.use("/api", apiRoutes);
 
 // PSSPORT Routes
-router.use("/", passportRoutes);
+router.use("/auth", passportRoutes);
 
 // If no API routes are hit, send the React app
 router.use((req, res) =>

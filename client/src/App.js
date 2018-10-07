@@ -16,17 +16,20 @@ class App extends Component {
   state = {
     isLoggedIn: false
   }
+
   
   componentWillMount(){
     this.checkAuth();
+    console.log("mount")
     API.getNews().then(news => {
+      console.log("something")
       console.log(news)
-      this.setState({
-      ["stories"]: [...news.data]
-      }, () => {
-        this.setState({["refresh"]: true}) 
-      console.log(this.state.stories)
-    })
+    //   this.setState({
+    //   ["stories"]: [...news.data]
+    //   }, () => {
+    //     this.setState({["refresh"]: true}) 
+    //   console.log(this.state.stories)
+    // })
     })
   }
 
@@ -80,7 +83,7 @@ class App extends Component {
 
   handleSignup(userData){
       API.handleSignup(userData)
-      .then(data => {return data.json()})
+      .then(data => data.json())
       .then(response=>{
         if(response === true){
           this.setState({

@@ -112,8 +112,8 @@ body {
   line-height: 1.7; }
 
 .story {
-  height: 30rem;
-  width: 30rem;
+  height: 45rem;
+  width: 45rem;
   border: solid 2px black; }
   .story__img {
     max-height: 20rem;

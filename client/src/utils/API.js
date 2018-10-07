@@ -9,7 +9,7 @@ export default {
     });
 	},
 	handleLogin: function(userData){
-		return fetch("/signin", {
+		return fetch("/auth/signin", {
         method: 'POST',
         headers: {
             "Content-Type": "application/json; charset=utf-8"
@@ -20,7 +20,7 @@ export default {
       });
 	},
 	handleSignup: function(userData){
-		return fetch("/signup", {
+		return fetch("/auth/signup", {
       method: 'POST',
       headers: {
           "Content-Type": "application/json; charset=utf-8"
@@ -31,7 +31,7 @@ export default {
     });
 	},
 	handlelogout: function(){
-		return fetch("/logout", {
+		return fetch("/auth/logout", {
       method: 'GET',
       credentials: 'include',
       mode: 'cors'
