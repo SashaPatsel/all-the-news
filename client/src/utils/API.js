@@ -37,7 +37,7 @@ export default {
       mode: 'cors'
     });
     }, 
-    getNews: function() {
-       return axios.get("/api/news")
+    getNews: function(source) {
+       return axios.get(`/api/news/${source}`)
     }
 }

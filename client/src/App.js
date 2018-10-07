@@ -14,22 +14,22 @@ import API from "./utils/API";
 
 class App extends Component {
   state = {
-    isLoggedIn: false
+    isLoggedIn: false,
+    source: "bleacher-report"
   }
 
   
   componentWillMount(){
     this.checkAuth();
-    console.log("mount")
-    API.getNews().then(news => {
-      console.log("something")
-      console.log(news)
-    //   this.setState({
-    //   ["stories"]: [...news.data]
-    //   }, () => {
-    //     this.setState({["refresh"]: true}) 
-    //   console.log(this.state.stories)
-    // })
+
+    API.getNews(this.state.source).then(news => {
+
+      this.setState({
+      ["stories"]: [...news.data]
+      }, () => {
+        this.setState({["refresh"]: true}) 
+      console.log(this.state.stories)
+    })
     })
   }
 
