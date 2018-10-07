@@ -35,14 +35,8 @@ class App extends Component {
     })
   }
 
-  handleChange = e => {
-    const {name, value} = e.target
-    this.setState({
-      [name]: value
-    }, data => {
-      console.log(this.state.source)
-      this.autocomplete()
-    })
+  handleChange = async e => {
+    this.autocomplete(e.target, sources);
   }
 
   checkAuth(){
@@ -134,7 +128,8 @@ class App extends Component {
 
   // AUTOCOMPLETE =========================
 
-   autocomplete(inp) {
+  autocomplete(inp, arr) {
+    console.log(inp, arr)
     /*the autocomplete function takes two arguments,
     the text field element and an array of possible autocompleted values:*/
     var currentFocus;
@@ -152,16 +147,16 @@ class App extends Component {
         /*append the DIV element as a child of the autocomplete container:*/
         this.parentNode.appendChild(a);
         /*for each item in the array...*/
-        for (i = 0; i < sources.length; i++) {
+        for (i = 0; i < arr.length; i++) {
           /*check if the item starts with the same letters as the text field value:*/
-          if (sources[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+          if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
             /*create a DIV element for each matching element:*/
             b = document.createElement("DIV");
             /*make the matching letters bold:*/
-            b.innerHTML = "<strong>" + sources[i].substr(0, val.length) + "</strong>";
-            b.innerHTML += sources[i].substr(val.length);
-            /*insert a input field that will hold the current sourcesay item's value:*/
-            b.innerHTML += "<input type='hidden' value='" + sources[i] + "'>";
+            b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+            b.innerHTML += arr[i].substr(val.length);
+            /*insert a input field that will hold the current array item's value:*/
+            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
             /*execute a function when someone clicks on the item value (DIV element):*/
             b.addEventListener("click", function(e) {
                 /*insert the value for the autocomplete text field:*/
@@ -179,13 +174,13 @@ class App extends Component {
         var x = document.getElementById(this.id + "autocomplete-list");
         if (x) x = x.getElementsByTagName("div");
         if (e.keyCode == 40) {
-          /*If the sourcesow DOWN key is pressed,
+          /*If the arrow DOWN key is pressed,
           increase the currentFocus variable:*/
           currentFocus++;
           /*and and make the current item more visible:*/
           addActive(x);
         } else if (e.keyCode == 38) { //up
-          /*If the sourcesow UP key is pressed,
+          /*If the arrow UP key is pressed,
           decrease the currentFocus variable:*/
           currentFocus--;
           /*and and make the current item more visible:*/
@@ -199,7 +194,6 @@ class App extends Component {
           }
         }
     });
-
     function addActive(x) {
       /*a function to classify an item as "active":*/
       if (!x) return false;
@@ -210,14 +204,12 @@ class App extends Component {
       /*add class "autocomplete-active":*/
       x[currentFocus].classList.add("autocomplete-active");
     }
-
     function removeActive(x) {
       /*a function to remove the "active" class from all autocomplete items:*/
       for (var i = 0; i < x.length; i++) {
         x[i].classList.remove("autocomplete-active");
       }
     }
-
     function closeAllLists(elmnt) {
       /*close all autocomplete lists in the document,
       except the one passed as an argument:*/
@@ -233,6 +225,7 @@ class App extends Component {
         closeAllLists(e.target);
     });
   }
+  
 
   // ===================================
 
@@ -250,11 +243,11 @@ class App extends Component {
 
       <div className="App">
 
-      <Input name="source" type="text" onChange={this.handleChange}/>
+      
 
       <form autocomplete="off" >
         <div class="autocomplete">
-          <input id="myInput" type="text" placeholder="Country"/>
+        
           <Input id="myInput" name="source" type="text" onChange={this.handleChange}/>
         </div>
         <input type="submit"/>
