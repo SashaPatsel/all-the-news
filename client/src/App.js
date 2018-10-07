@@ -37,11 +37,13 @@ class App extends Component {
   }
 
   handleChange = async e => {
+    
     this.autocomplete(e.target, sources);
     const {name, value} = e.target
+    console.log(value)
     this.setState({
       source: value
-    })
+    }, () => console.log(this.state.source))
   }
 
   checkAuth(){
@@ -204,6 +206,9 @@ class App extends Component {
           if (autocomp.state.currentFocus > -1) {
             /*and simulate a click on the "active" item:*/
             if (x) x[autocomp.state.currentFocus].click();
+            autocomp.setState({
+              source:  document.getElementById("myInput").value 
+            })
           }
         }
     });
@@ -246,7 +251,7 @@ class App extends Component {
     e.preventDefault()
     console.log(this.state.source)
     API.getNews(this.state.source).then(news => {
-
+      console.log(news)
       this.setState({
       stories: [...news.data]
       }, () => {
@@ -275,7 +280,7 @@ class App extends Component {
       <form autocomplete="off" onSubmit={this.getNews}>
         <div class="autocomplete">
         
-          <Input id="myInput" name="source" type="text" onChange={this.handleChange}/>
+          <Input elementID="myInput" name="source" type="text" onChange={this.handleChange}/>
         </div>
         <input type="submit"/>
       </form>
