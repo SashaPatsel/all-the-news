@@ -133,14 +133,17 @@ class App extends Component {
   autocomplete = (inp, arr) => {
     /*the autocomplete function takes two arguments,
     the text field element and an array of possible autocompleted values:*/
-    var currentFocus;
+
     /*execute a function when someone writes in the text field:*/
-    inp.addEventListener("input", function(e) {
+    const autocomp = this
+    inp.addEventListener("input", async function(e) {
         var a, b, i, val = this.value;
         /*close any already open lists of autocompleted values*/
         closeAllLists();
         if (!val) { return false;}
-        currentFocus = -1;
+       await autocomp.setState({
+          currentFocus: -1
+        })
         /*create a DIV element that will contain the items (values):*/
         a = document.createElement("DIV");
         a.setAttribute("id", this.id + "autocomplete-list");
@@ -171,42 +174,45 @@ class App extends Component {
         }
     });
     /*execute a function presses a key on the keyboard:*/
-    inp.addEventListener("keydown", function(e) {
+    inp.addEventListener("keydown", async function(e) {
       
         var x = document.getElementById(this.id + "autocomplete-list");
-        console.log(currentFocus)
+
         if (x) x = x.getElementsByTagName("div");
         if (e.keyCode == 40) {
           /*If the arrow DOWN key is pressed,
           increase the currentFocus variable:*/
-          currentFocus++;
+         await autocomp.setState({
+           currentFocus: autocomp.state.currentFocus + 1
+         })
           /*and and make the current item more visible:*/
-          addActive(x, currentFocus);
+          addActive(x);
         } else if (e.keyCode == 38) { //up
           /*If the arrow UP key is pressed,
           decrease the currentFocus variable:*/
-          currentFocus--;
+          autocomp.setState({
+            currentFocus: autocomp.state.currentFocus -1 
+          })
           /*and and make the current item more visible:*/
-          addActive(x, currentFocus);
+          addActive(x);
         } else if (e.keyCode == 13) {
           /*If the ENTER key is pressed, prevent the form from being submitted,*/
           e.preventDefault();
-          if (currentFocus > -1) {
+          if (autocomp.state.currentFocus > -1) {
             /*and simulate a click on the "active" item:*/
-            if (x) x[currentFocus].click();
+            if (x) x[autocomp.state.currentFocus].click();
           }
         }
     });
-    function addActive(x, currentFocus) {
+    function addActive(x) {
       /*a function to classify an item as "active":*/
       if (!x) return false;
-      console.log(x, currentFocus)
       /*start by removing the "active" class on all items:*/
       removeActive(x);
-      if (currentFocus >= x.length) currentFocus = 0;
-      if (currentFocus < 0) currentFocus = (x.length - 1);
+      if (autocomp.state.currentFocus >= x.length) autocomp.state.currentFocus = 0;
+      if (autocomp.state.currentFocus < 0) autocomp.state.currentFocus = (x.length - 1);
       /*add class "autocomplete-active":*/
-      x[currentFocus].classList.add("autocomplete-active");
+      x[autocomp.state.currentFocus].classList.add("autocomplete-active");
     }
     function removeActive(x) {
       /*a function to remove the "active" class from all autocomplete items:*/
