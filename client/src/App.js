@@ -17,7 +17,7 @@ import API from "./utils/API";
 class App extends Component {
   state = {
     isLoggedIn: false,
-    source: "bleacher-report",
+    source: "",
     currentFocus: 0
   }
 
@@ -25,7 +25,7 @@ class App extends Component {
   componentWillMount(){
     this.checkAuth();
 
-    API.getNews(this.state.source).then(news => {
+    API.getNews("bleacher-report").then(news => {
 
       this.setState({
       ["stories"]: [...news.data]
@@ -38,7 +38,10 @@ class App extends Component {
 
   handleChange = async e => {
     this.autocomplete(e.target, sources);
-    console.log(e.target.value)
+    const {name, value} = e.target
+    this.setState({
+      source: value
+    })
   }
 
   checkAuth(){
@@ -239,6 +242,20 @@ class App extends Component {
 
   // ===================================
 
+  getNews = e => {
+    e.preventDefault()
+    console.log(this.state.source)
+    API.getNews(this.state.source).then(news => {
+
+      this.setState({
+      stories: [...news.data]
+      }, () => {
+        this.setState({refresh: false}) 
+      console.log(this.state.stories)
+    })
+    })
+  }
+
   render() {
     return (
 
@@ -255,7 +272,7 @@ class App extends Component {
 
       
 
-      <form autocomplete="off" >
+      <form autocomplete="off" onSubmit={this.getNews}>
         <div class="autocomplete">
         
           <Input id="myInput" name="source" type="text" onChange={this.handleChange}/>
