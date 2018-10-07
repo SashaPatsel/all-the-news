@@ -286,6 +286,7 @@ class App extends Component {
       </form>
 
        {this.state.stories ? this.state.stories.map(story => (
+         
          <Story headline={story.title} img={story.urlToImage} description={story.description}/>
        )) : <p>ey</p>
       }
