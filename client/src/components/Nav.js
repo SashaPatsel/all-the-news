@@ -5,7 +5,8 @@ class Nav extends Component {
 
   render() {
     return (
-      <div>
+      <div className="nav">
+        {this.props.children}
       </div>  
     )
   }

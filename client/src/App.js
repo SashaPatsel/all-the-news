@@ -41,9 +41,11 @@ class App extends Component {
 
   checkAuth(){
    API.checkAuth()
-    .then(data => {return data.json()})
+    .then(data => {
+      console.log(data)
+      return data.json()})
     .then(response => {
-      // console.log(response);
+      console.log(response);
       this.setState({
         isLoggedIn: response
       })
@@ -272,7 +274,21 @@ class App extends Component {
       
 
       <div className="App">
-        <Nav/>
+        <Nav>
+        {this.state.isLoggedIn ?  <div>
+        
+        <Button float="none" handleBtnClick={this.handlelogout.bind(this)}>logout</Button>
+        </div> :  <div>
+          <form ref="submitForm" onClick={this.resetError.bind(this)}>
+            <p id="form-error"></p>
+            <Input elementID="user-email" inputType="email" placeholder="email" img="email" required={true} size="3"/>
+            <Input elementID="user-pw" inputType="password" placeholder="password" img="password" required={true} size="6"/>
+            <Button handleBtnClick={this.handleSubmitAccess.bind(this)} float="left">LOGIN</Button>
+            <Button handleBtnClick={this.handleSubmitAccess.bind(this)} float="right">SIGNUP</Button>
+
+          </form>
+        </div>}
+        </Nav>  
       <Source source="Bleacher Report"/>
 
       <form autocomplete="off" onSubmit={this.getNews}>
@@ -289,20 +305,7 @@ class App extends Component {
        )) : <p>ey</p>
       }
 
-        {this.state.isLoggedIn ?  <div>
-        <h3>Welcome to your account panel.</h3>
-        <h4>♡</h4>
-        <Button float="none" handleBtnClick={this.handlelogout.bind(this)}>logout</Button>
-        </div> :  <div>
-          <form ref="submitForm" onClick={this.resetError.bind(this)}>
-            <p id="form-error"></p>
-            <Input elementID="user-email" inputType="email" placeholder="email" img="email" required={true} size="3"/>
-            <Input elementID="user-pw" inputType="password" placeholder="password" img="password" required={true} size="6"/>
-            <Button handleBtnClick={this.handleSubmitAccess.bind(this)} float="left">LOGIN</Button>
-            <Button handleBtnClick={this.handleSubmitAccess.bind(this)} float="right">SIGNUP</Button>
-
-          </form>
-        </div>}
+ 
 
       </div>
     );
