@@ -1,12 +1,9 @@
 var Sequelize = require("sequelize");
 
-var uuidv1  = require('uuid/v1');
-
-var bcrypt  = require('bcrypt');
 
 module.exports = function(sequelize, DataTypes) {
-    const User = sequelize.define("User", {
-        uuid: {
+    const Story = sequelize.define("Story", {
+        id: {
           primaryKey: true,
           type: DataTypes.UUID,
           defaultValue: DataTypes.UUIDV1,

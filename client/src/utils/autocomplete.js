@@ -66,13 +66,14 @@ const auto = {
           addActive(x);
         } else if (e.keyCode == 13) {
           /*If the ENTER key is pressed, prevent the form from being submitted,*/
+          console.log(autocomp.state.source)
           e.preventDefault();
           if (autocomp.state.currentFocus > -1) {
             /*and simulate a click on the "active" item:*/
             if (x) x[autocomp.state.currentFocus].click();
             autocomp.setState({
-              source:  document.getElementById("myInput").value 
-            })
+              source: document.getElementById("myInput").value 
+            }, () => console.log(autocomp.state.source))
           }
         }
     });

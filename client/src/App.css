@@ -169,17 +169,22 @@ input[type=submit] {
   border-radius: 50px;
   padding: 10px 40px;
   text-transform: uppercase;
-  background-image: linear-gradient(120deg, #02B902 0%, #02B902 50%, #018B8B 50%);
+  background-image: linear-gradient(120deg, #0824c5 0%, #0824c5 50%, #500AA3 50%);
   background-size: 245%;
-  transition: all .4s; }
-  .source:hover, .source:active {
+  transition: all .4s;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); }
+  .source:hover {
     background-position: 99%;
     color: white;
-    transform: scale(1.1); }
+    transform: scale(1.1);
+    cursor: pointer; }
+  .source:active {
+    transform: translateY(2px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4); }
 
 .story {
-  height: 45rem;
-  width: 45rem;
+  display: inline-block;
+  padding: 5rem;
   border: solid 2px black; }
   .story__img {
     max-height: 20rem;
