@@ -52,12 +52,12 @@ module.exports = function(sequelize, DataTypes) {
         });
     };
 
-    User.associate = function(models){
-        User.hasMany(models.Stories, {
-            foreignKey: "accountUUID",
-            onDelete: "cascade"
-        });
-    };
+    // User.associate = function(models){
+    //     User.hasMany(models.Stories, {
+    //         foreignKey: "accountUUID",
+    //         onDelete: "cascade"
+    //     });
+    // };
 
 
 

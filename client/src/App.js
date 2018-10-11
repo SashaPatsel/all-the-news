@@ -247,8 +247,18 @@ class App extends Component {
 
   // ===================================
 
+  setSource(src) {
+    this.setState({
+      source: src
+    })
+    this.getNews()
+  }
+
   getNews = e => {
-    e.preventDefault()
+    if (e) {
+      e.preventDefault()
+    }
+    
     console.log(this.state.source)
     API.getNews(this.state.source).then(news => {
       console.log(news)
@@ -278,7 +288,7 @@ class App extends Component {
         {this.state.isLoggedIn ?  <div>
         
         <Button float="none" handleBtnClick={this.handlelogout.bind(this)}>logout</Button>
-        </div> :  <div>
+        </div> :  <div className="nav__auth">
           <form ref="submitForm" onClick={this.resetError.bind(this)}>
             <p id="form-error"></p>
             <Input elementID="user-email" inputType="email" placeholder="email" img="email" required={true} size="3"/>
@@ -289,7 +299,7 @@ class App extends Component {
           </form>
         </div>}
         </Nav>  
-      <Source source="Bleacher Report"/>
+      
 
       <form autocomplete="off" onSubmit={this.getNews}>
         <div class="autocomplete">
@@ -298,7 +308,7 @@ class App extends Component {
         </div>
         <input type="submit"/>
       </form>
-
+      <Source source="Bleacher Report" onClick={() => this.setSource("bleacher-report")}/>
        {this.state.stories ? this.state.stories.map(story => (
          
          <Story headline={story.title} img={story.urlToImage} description={story.description}/>

@@ -114,18 +114,14 @@ body {
 .input {
   border-radius: 2rem;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
-  margin: 2rem; }
+  margin: 2rem;
+  width: 10rem;
+  padding: 5px; }
 
 .autocomplete {
   /*the container must be positioned relative:*/
   position: relative;
   display: inline-block; }
-
-input {
-  border: 1px solid transparent;
-  background-color: #f1f1f1;
-  padding: 10px;
-  font-size: 16px; }
 
 input[type=text] {
   background-color: #f1f1f1;
@@ -164,12 +160,14 @@ input[type=submit] {
 
 .nav {
   background-color: #08569C;
-  color: white; }
+  color: white;
+  height: 8rem; }
 
 .source {
   display: inline-block;
   margin: 5px auto 15px;
   font-family: inherit;
+  font-size: 1rem;
   border-radius: 50px;
   padding: 10px 40px;
   text-transform: uppercase;

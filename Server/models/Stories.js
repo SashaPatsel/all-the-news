@@ -30,33 +30,9 @@ module.exports = function(sequelize, DataTypes) {
 
     });
 
-    // methods ======================
-    // generating pw hash
-    User.generateHash = function(password) {
-      return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-    };
-    // validate pw
-    User.prototype.validPassword = function(password) {
-      return bcrypt.compareSync(password, this.local_pw);
-    };
-
-    // accociations ======================
-
-    User.associate = function(models){
-        User.hasOne(models.Account, {
-            foreignKey: "accountUUID",
-            onDelete: "cascade"
-        });
-    };
-
-    User.associate = function(models){
-        User.hasMany(models.Stories, {
-            foreignKey: "accountUUID",
-            onDelete: "cascade"
-        });
-    };
 
 
 
-    return User;
+
+    return Story;
 }
