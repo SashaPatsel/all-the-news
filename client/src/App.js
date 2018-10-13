@@ -148,7 +148,7 @@ class App extends Component {
     }
     
     console.log(this.state.source)
-    API.getNews(this.state.source).then(news => {
+    API.getNews(this.state.value).then(news => {
       console.log(news)
       this.setState({
       stories: [...news.data]
