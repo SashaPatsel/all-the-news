@@ -304,7 +304,7 @@ class App extends Component {
       <form autocomplete="off" onSubmit={this.getNews}>
         <div class="autocomplete">
         
-          <Input elementID="myInput" name="source" type="text" onChange={this.handleChange}/>
+          <Input placeholder="Search News Source"  elementID="myInput" name="source" type="text" onChange={this.handleChange}/>
         </div>
         <input type="submit"/>
       </form>

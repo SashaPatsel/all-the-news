@@ -14,7 +14,7 @@ html {
   font-size: 62.5%; //1rem = 10px
 
 
-// Media query order should always be descending. This is the only way the browser can properly apply the styling to each screen size respectively.
+// Media query order should always be descwending. This is the only way the browser can properly apply the styling to each screen size respectively.
 
 //The reason being, that because both apply (both conditions being true--the screen is smaller thna 1200px AND 900px), the most recent code, will win the tie breaker, and be applied.
 

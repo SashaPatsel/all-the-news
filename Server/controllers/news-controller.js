@@ -8,7 +8,7 @@ module.exports = {
   getStories: (req, res) => {
     axios.get(`https://newsapi.org/v2/top-headlines?sources=${req.params.source}&apiKey=${keys.news.apiKey}`).then(news => {
       res.json(news.data.articles)
-    })
+    }).catch(err => err)
 
   }
 
