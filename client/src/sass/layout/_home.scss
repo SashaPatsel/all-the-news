@@ -1,12 +1,13 @@
 .home {
   &__container{
-
+    
     &--main {
-
+      background-color: rgb(200,200,200);
     }
 
     &--stories {
-      background-color: rgb(180,180,180);
+      padding: 3rem 0;
+     
       display: flex;
       flex-direction: column;
       justify-content: center;

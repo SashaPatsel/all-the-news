@@ -155,7 +155,7 @@ class App extends Component {
         stories: [...news.data]
       }, () => {
         this.setState({ refresh: false })
-
+        console.log(this.state.stories)
       })
     })
   }
@@ -264,7 +264,7 @@ class App extends Component {
 
         <div className="home__container--stories">
           {this.state.stories ? this.state.stories.map(story => (
-            <Story headline={story.title} img={story.urlToImage} description={story.description} />
+            <Story headline={story.title} img={story.urlToImage} description={story.description} link={story.url}/>
           )) : <p>NEWS</p>
           }
 

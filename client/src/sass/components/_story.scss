@@ -2,8 +2,13 @@
   display: inline-block;
   padding: 2rem 5rem 5rem 5rem;
   border: solid 2px black;
+  
   background-color: white;
   width: 80%;
+
+  &:not(:last-child) {
+    border-bottom: none;
+  }
 
   &__headline {
     text-align: center;
@@ -18,5 +23,10 @@
   &__description {
     float: left;
     margin-left: 1rem;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: black;
   }
 }
