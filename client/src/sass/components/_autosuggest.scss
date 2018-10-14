@@ -1,0 +1,16 @@
+
+
+
+// FOR AUTOSUGGEST LIBRARY
+.react-autosuggest__container > * :not(.react-autosuggest__input) {
+  background-color: black;
+  border-bottom: solid white 1px;
+  z-index: 50;
+  position: relative;
+
+
+}
+
+.react-autosuggest__input:focus {
+  outline: none;
+}

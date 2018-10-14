@@ -23,110 +23,112 @@ import Autosuggest from 'react-autosuggest';
 class App extends Component {
   state = {
     isLoggedIn: false,
-    source: "",
+    source: "bbc-news",
     currentFocus: 0,
-    value: "",
+    value: "bbc-news",
     suggestions: []
   }
 
-  
-  componentWillMount(){
+
+  componentWillMount() {
     this.checkAuth();
+    this.getNews();
   }
 
   handleChange = async e => {
-    
+
     // auto.autocomplete(e.target, sources, this);
-    const {name, value} = e.target
+    const { name, value } = e.target
     console.log(value)
     this.setState({
       source: value
     }, () => console.log(this.state.source))
   }
 
-  checkAuth(){
-   API.checkAuth()
-    .then(data => {
-      console.log(data)
-      return data.json()})
-    .then(response => {
-      console.log(response);
-      this.setState({
-        isLoggedIn: response
+  checkAuth() {
+    API.checkAuth()
+      .then(data => {
+        console.log(data)
+        return data.json()
       })
-    })
-    .catch(err => console.log("err", err));
+      .then(response => {
+        console.log(response);
+        this.setState({
+          isLoggedIn: response
+        })
+      })
+      .catch(err => console.log("err", err));
   }
 
-  handleSubmitAccess(e){
-    if(this.refs.submitForm.reportValidity()) {
+  handleSubmitAccess(e) {
+    if (this.refs.submitForm.reportValidity()) {
       e.preventDefault();
 
       const userData = {
-        email:    document.getElementById("user-email").value,
+        email: document.getElementById("user-email").value,
         local_pw: document.getElementById("user-pw").value
       }
-    
+
       let selectedButton = e.target.innerText;
       selectedButton = selectedButton.toLowerCase();
 
       this.refs.submitForm.reset();
 
-      selectedButton === "signup" ?  this.handleSignup(userData) : this.handleLogin(userData)
+      selectedButton === "signup" ? this.handleSignup(userData) : this.handleLogin(userData)
     }
   }
 
-  handleLogin(userData){
-      API.handleLogin(userData)
-      .then(data => {return data.json()})
-      .then(response=>{
-        if(response === true){
+  handleLogin(userData) {
+    API.handleLogin(userData)
+      .then(data => { return data.json() })
+      .then(response => {
+        if (response === true) {
           this.setState({
             isLoggedIn: response
-          }) 
+          })
         }
         else {
           const errorWrap = document.getElementById("form-error");
           errorWrap.innerText = "UH-OH! Please try again.";
           errorWrap.className += "error";
-        } 
+        }
       })
-      .catch(err=> console.log("err",err));
+      .catch(err => console.log("err", err));
   }
 
-  handleSignup(userData){
-      API.handleSignup(userData)
+  handleSignup(userData) {
+    API.handleSignup(userData)
       .then(data => data.json())
-      .then(response=>{
-        if(response === true){
+      .then(response => {
+        if (response === true) {
           this.setState({
             isLoggedIn: response
-          }) 
+          })
         }
         else {
           const errorWrap = document.getElementById("form-error");
           errorWrap.innerText = "UH-OH! Please try again.";
           errorWrap.className += "error";
 
-        } 
-        
+        }
+
       })
-      .catch(err=> console.log("err",err));
+      .catch(err => console.log("err", err));
   }
 
-  handlelogout(){
+  handlelogout() {
     API.handlelogout()
-    .then(data => {return data.json()})
-    .then(response=>{
-      console.log(response)
-      this.setState({
-        isLoggedIn: response
+      .then(data => { return data.json() })
+      .then(response => {
+        console.log(response)
+        this.setState({
+          isLoggedIn: response
+        })
       })
-    })
-    .catch(err=> console.log("err",err))
+      .catch(err => console.log("err", err))
   }
 
-  resetError(){
+  resetError() {
     const errorWrap = document.getElementById("form-error");
     errorWrap.innerText = "";
     errorWrap.classList.remove("error");
@@ -146,16 +148,15 @@ class App extends Component {
     if (e) {
       e.preventDefault()
     }
-    
-    console.log(this.state.source)
+
+
     API.getNews(this.state.value).then(news => {
-      console.log(news)
       this.setState({
-      stories: [...news.data]
+        stories: [...news.data]
       }, () => {
-        this.setState({refresh: false}) 
-      console.log(this.state.stories)
-    })
+        this.setState({ refresh: false })
+
+      })
     })
   }
 
@@ -164,25 +165,25 @@ class App extends Component {
 
   // Teach Autosuggest how to calculate suggestions for any given input value.
   getSuggestions = value => {
-  const inputValue = value.trim().toLowerCase();
-  const inputLength = inputValue.length;
+    const inputValue = value.trim().toLowerCase();
+    const inputLength = inputValue.length;
 
-  return inputLength === 0 ? [] : sources.filter(lang =>
-    lang.toLowerCase().slice(0, inputLength) === inputValue
+    return inputLength === 0 ? [] : sources.filter(lang =>
+      lang.toLowerCase().slice(0, inputLength) === inputValue
+    );
+  };
+
+  // When suggestion is clicked, Autosuggest needs to populate the input
+  // based on the clicked suggestion. Teach Autosuggest how to calculate the
+  // input value for every given suggestion.
+  getSuggestionValue = suggestion => suggestion;
+
+  // Use your imagination to render suggestions.
+  renderSuggestion = suggestion => (
+    <div>
+      {suggestion}
+    </div>
   );
-};
-
-// When suggestion is clicked, Autosuggest needs to populate the input
-// based on the clicked suggestion. Teach Autosuggest how to calculate the
-// input value for every given suggestion.
-   getSuggestionValue = suggestion => suggestion;
-
-// Use your imagination to render suggestions.
-   renderSuggestion = suggestion => (
-  <div>
-    {suggestion}
-  </div>
-);
 
   onChange = (event, { newValue }) => {
     this.setState({
@@ -211,7 +212,7 @@ class App extends Component {
 
     // Autosuggest will pass through all these props to the input.
     const inputProps = {
-      placeholder: 'Type a programming language',
+      placeholder: 'Search A News Source',
       value,
       onChange: this.onChange
     };
@@ -224,48 +225,49 @@ class App extends Component {
       //   </Switch> 
       // </Router>  
 
-      
+
 
       <div className="App">
         <Nav>
-        {this.state.isLoggedIn ?  <div>
-        
-        <Button float="none" handleBtnClick={this.handlelogout.bind(this)}>logout</Button>
-        </div> :  <div className="nav__auth">
-          <form ref="submitForm" onClick={this.resetError.bind(this)}>
-            <p id="form-error"></p>
-            <Input elementID="user-email" inputType="email" placeholder="email" img="email" required={true} size="3"/>
-            <Input elementID="user-pw" inputType="password" placeholder="password" img="password" required={true} size="6"/>
-            <Button handleBtnClick={this.handleSubmitAccess.bind(this)} float="left">LOGIN</Button>
-            <Button handleBtnClick={this.handleSubmitAccess.bind(this)} float="right">SIGNUP</Button>
 
+          <form autocomplete="off" onSubmit={this.getNews} className="autosuggest">
+            
+              <Autosuggest
+                suggestions={suggestions}
+                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+                onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+                getSuggestionValue={this.getSuggestionValue}
+                renderSuggestion={this.renderSuggestion}
+                inputProps={inputProps}
+              />
+            <input type="submit" />
           </form>
-        </div>}
-        </Nav>  
-      
 
-      <form autocomplete="off" onSubmit={this.getNews}>
-        <div class="autocomplete">
-        <Autosuggest
-        suggestions={suggestions}
-        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-        onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-        getSuggestionValue={this.getSuggestionValue}
-        renderSuggestion={this.renderSuggestion}
-        inputProps={inputProps}
-      />
-          {/* <Input placeholder="Search News Source"  elementID="myInput" name="source" type="text" onChange={this.handleChange}/> */}
+
+          {this.state.isLoggedIn ? <div>
+
+            <Button float="none" handleBtnClick={this.handlelogout.bind(this)}>logout</Button>
+          </div> : <div className="nav__auth">
+              <form ref="submitForm" onClick={this.resetError.bind(this)}>
+                <p id="form-error"></p>
+                <Input elementID="user-email" inputType="email" placeholder="email" img="email" required={true} size="3" />
+                <Input elementID="user-pw" inputType="password" placeholder="password" img="password" required={true} size="6" />
+                <Button handleBtnClick={this.handleSubmitAccess.bind(this)} float="left">LOGIN</Button>
+                <Button handleBtnClick={this.handleSubmitAccess.bind(this)} float="right">SIGNUP</Button>
+
+              </form>
+            </div>}
+        </Nav>
+
+
+
+        <div className="stories-container">
+          {this.state.stories ? this.state.stories.map(story => (
+            <Story headline={story.title} img={story.urlToImage} description={story.description} />
+          )) : <p>NEWS</p>
+          }
+
         </div>
-        <input type="submit"/>
-      </form>
-      <Source source="Bleacher Report" onClick={() => this.setSource("bleacher-report")}/>
-       {this.state.stories ? this.state.stories.map(story => (
-         
-         <Story headline={story.title} img={story.urlToImage} description={story.description}/>
-       )) : <p>ey</p>
-      }
-
- 
 
       </div>
     );
