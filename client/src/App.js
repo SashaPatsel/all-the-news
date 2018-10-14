@@ -227,41 +227,42 @@ class App extends Component {
 
 
 
-      <div className="App">
+      <div className="home__container--main">
         <Nav>
 
           <form autocomplete="off" onSubmit={this.getNews} className="autosuggest">
-            
-              <Autosuggest
-                suggestions={suggestions}
-                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-                onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-                getSuggestionValue={this.getSuggestionValue}
-                renderSuggestion={this.renderSuggestion}
-                inputProps={inputProps}
-              />
+
+            <Autosuggest
+              suggestions={suggestions}
+              onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+              onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+              getSuggestionValue={this.getSuggestionValue}
+              renderSuggestion={this.renderSuggestion}
+              inputProps={inputProps}
+            />
             <input type="submit" />
           </form>
 
+          <div className="nav__auth">
+            {this.state.isLoggedIn ? <div>
 
-          {this.state.isLoggedIn ? <div>
+              <Button float="none" handleBtnClick={this.handlelogout.bind(this)}>logout</Button>
+            </div> : <div className="nav__auth">
+                <form ref="submitForm" onClick={this.resetError.bind(this)}>
+                  <p id="form-error"></p>
+                  <Input elementID="user-email" inputType="email" placeholder="email" img="email" required={true} size="3" />
+                  <Input elementID="user-pw" inputType="password" placeholder="password" img="password" required={true} size="6" />
+                  <Button handleBtnClick={this.handleSubmitAccess.bind(this)} float="left">LOGIN</Button>
+                  <Button handleBtnClick={this.handleSubmitAccess.bind(this)} float="right">SIGNUP</Button>
 
-            <Button float="none" handleBtnClick={this.handlelogout.bind(this)}>logout</Button>
-          </div> : <div className="nav__auth">
-              <form ref="submitForm" onClick={this.resetError.bind(this)}>
-                <p id="form-error"></p>
-                <Input elementID="user-email" inputType="email" placeholder="email" img="email" required={true} size="3" />
-                <Input elementID="user-pw" inputType="password" placeholder="password" img="password" required={true} size="6" />
-                <Button handleBtnClick={this.handleSubmitAccess.bind(this)} float="left">LOGIN</Button>
-                <Button handleBtnClick={this.handleSubmitAccess.bind(this)} float="right">SIGNUP</Button>
-
-              </form>
-            </div>}
+                </form>
+              </div>}
+          </div>
         </Nav>
 
 
 
-        <div className="stories-container">
+        <div className="home__container--stories">
           {this.state.stories ? this.state.stories.map(story => (
             <Story headline={story.title} img={story.urlToImage} description={story.description} />
           )) : <p>NEWS</p>
