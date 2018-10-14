@@ -107,15 +107,22 @@ body {
   box-sizing: border-box; }
 
 body {
-  font-family: 'Archivo Narrow', sans-serif;
+  font-family: 'Slabo 27px', serif;
   font-weight: 400px;
   line-height: 1.7; }
+
+.autosuggest {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 30%; }
 
 .react-autosuggest__container > * :not(.react-autosuggest__input) {
   background-color: black;
   border-bottom: solid white 1px;
   z-index: 50;
-  position: relative; }
+  position: relative;
+  list-style: none; }
 
 .react-autosuggest__input:focus {
   outline: none; }

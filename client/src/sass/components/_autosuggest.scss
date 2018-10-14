@@ -1,4 +1,9 @@
-
+.autosuggest {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 30%;
+}
 
 
 // FOR AUTOSUGGEST LIBRARY
@@ -7,7 +12,7 @@
   border-bottom: solid white 1px;
   z-index: 50;
   position: relative;
-
+list-style: none;
 
 }
 
