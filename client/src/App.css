@@ -136,7 +136,7 @@ body {
 
 .react-autosuggest__input {
   border-radius: 2rem;
-  padding: 1rem;
+  padding: 1rem 4rem;
   width: 100%;
   background-image: url("https://cdn1.iconfinder.com/data/icons/hawcons/32/698627-icon-111-search-512.png") no-repeat 16px;
   background-size: 16px; }
@@ -188,8 +188,13 @@ body {
     width: 40%;
     position: relative; }
     .nav__search--icon {
-      color: black;
-      font-size: 2rem; }
+      color: rgba(150, 150, 150, 0.8);
+      font-size: 2rem;
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 52; }
 
 .source {
   display: inline-block;

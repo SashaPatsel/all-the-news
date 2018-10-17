@@ -23,8 +23,13 @@
     position: relative;
 
     &--icon {
-      color: black;
+      color: rgba(150,150,150,.8);
       font-size: 2rem;
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 52;
     }
 
     &--submit {

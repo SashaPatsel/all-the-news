@@ -243,7 +243,7 @@ class App extends Component {
           <div className="nav__search">
             <form autocomplete="off" onSubmit={this.getNews} className="autosuggest">
               <div className="autosuggest__container">
-              <FontAwesomeIcon icon="search" className="nav__search--icon" size="lg"/>
+              <FontAwesomeIcon icon="search" className="nav__search--icon"/>
               
                 <Autosuggest
                   suggestions={suggestions}
