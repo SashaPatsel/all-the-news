@@ -8,6 +8,7 @@ import Nav from "./components/Nav"
 import Panel from './components/Panel'
 import Story from './components/Story'
 import Source from './components/Source'
+import Submit from './components/Input/Submit'
 
 import sources from "./data/sources"
 
@@ -248,20 +249,20 @@ class App extends Component {
               renderSuggestion={this.renderSuggestion}
               inputProps={inputProps}
             />
-            <input type="submit" />
+            <Submit text="submit" />
           </form>
   </div>
           <div className="nav__auth">
             {this.state.isLoggedIn ? <div>
 
-              <Button float="none" handleBtnClick={this.handlelogout.bind(this)}>logout</Button>
+              <Button float="none" onClick={this.handlelogout.bind(this)}>logout</Button>
             </div> : <div className="nav__auth">
                 <form ref="submitForm" onClick={this.resetError.bind(this)}>
                   <p id="form-error"></p>
                   <Input elementID="user-email" inputType="email" placeholder="email" img="email" required={true} size="3" />
                   <Input elementID="user-pw" inputType="password" placeholder="password" img="password" required={true} size="6" />
-                  <Button handleBtnClick={this.handleSubmitAccess.bind(this)} float="left">LOGIN</Button>
-                  <Button handleBtnClick={this.handleSubmitAccess.bind(this)} float="right">SIGNUP</Button>
+                  <Button onClick={this.handleSubmitAccess.bind(this)} float="left">LOGIN</Button>
+                  <Button onClick={this.handleSubmitAccess.bind(this)} float="right">SIGNUP</Button>
 
                 </form>
               </div>}

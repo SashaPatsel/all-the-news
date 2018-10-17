@@ -4,13 +4,16 @@
   height: 8rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   &__logo {
     margin-left: 3rem;
-
+    height: 100%;
+    
     &--img {
       width: auto;
       height: 100%;
+      
     }
   }
 

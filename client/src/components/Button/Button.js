@@ -1,8 +1,8 @@
 import React from "react";
-import "./style.css";
+
 
 const Button = (props) => (
-    <button className={`btn ${props.float}`} onClick={props.handleBtnClick}> {props.children} </button> 
+    <button className={`button ${props.float}`} onClick={props.onClick}> {props.children} </button> 
 );
 
 export default Button;
