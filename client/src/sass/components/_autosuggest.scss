@@ -1,26 +1,32 @@
 .autosuggest {
-  // display: flex;
-  // flex-direction: row;
-  // justify-content: center;
-  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  
+  width: 100%;
 
-
+  &__container {
+    position: relative;
+    // width: 70%;
+    flex-grow: 1;
+  }
 }
 
 // FOR AUTOSUGGEST LIBRARY
 .react-autosuggest {
 
- &__container {
-   position: absolute;
-
-   &--focused {
+  &__container {
     position: absolute;
-   }
-   &--opened {
-    position: absolute;
-   }
+    width: 95%;
 
- } 
+    &--focused {
+      position: absolute;
+    }
+    &--open {
+      position: absolute;
+    }
+  }
+
+ 
 
   &__container > * :not(.react-autosuggest__input) {
     background-color: black;
@@ -33,6 +39,10 @@
   &__input {
     border-radius: 2rem;
     padding: 1rem;
+    width: 100%;
+
+    background-image: url("https://cdn1.iconfinder.com/data/icons/hawcons/32/698627-icon-111-search-512.png") no-repeat 16px;
+			background-size: 16px;
   }
 
 }

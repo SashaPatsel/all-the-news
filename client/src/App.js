@@ -17,9 +17,11 @@ import './App.css';
 // helper functions
 import API from "./utils/API";
 import Autosuggest from 'react-autosuggest';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faSearch} from '@fortawesome/free-solid-svg-icons'
 
-
-
+library.add(faSearch)
 
 class App extends Component {
   state = {
@@ -240,15 +242,18 @@ class App extends Component {
           </div>
           <div className="nav__search">
             <form autocomplete="off" onSubmit={this.getNews} className="autosuggest">
-
-              <Autosuggest
-                suggestions={suggestions}
-                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-                onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-                getSuggestionValue={this.getSuggestionValue}
-                renderSuggestion={this.renderSuggestion}
-                inputProps={inputProps}
-              />
+              <div className="autosuggest__container">
+              <FontAwesomeIcon icon="search" className="nav__search--icon" size="lg"/>
+              
+                <Autosuggest
+                  suggestions={suggestions}
+                  onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+                  onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+                  getSuggestionValue={this.getSuggestionValue}
+                  renderSuggestion={this.renderSuggestion}
+                  inputProps={inputProps}
+                />
+              </div>
               <div className="nav__search--submit">
                 <Submit text="submit" />
               </div>

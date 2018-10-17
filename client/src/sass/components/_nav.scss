@@ -22,9 +22,13 @@
     width: 40%;
     position: relative;
 
+    &--icon {
+      color: black;
+      font-size: 2rem;
+    }
+
     &--submit {
-      position: absolute;
-      right: 0;
+    
     }
   }
 
