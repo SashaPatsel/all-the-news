@@ -127,17 +127,30 @@ body {
 .react-autosuggest__input:focus {
   outline: none; }
 
-.input {
+.react-autosuggest__input {
   border-radius: 2rem;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
   margin: 2rem;
   width: 10rem;
   padding: 5px; }
 
+.input {
+  border-radius: 2rem;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
+  width: 10rem;
+  padding: 5px; }
+
 .nav {
-  background-color: #08569C;
+  background-color: #9F9E41;
   color: white;
-  height: 8rem; }
+  height: 8rem;
+  display: flex;
+  justify-content: space-between; }
+  .nav__logo {
+    margin-left: 3rem; }
+    .nav__logo--img {
+      width: auto;
+      height: 100%; }
 
 .source {
   display: inline-block;
@@ -147,7 +160,7 @@ body {
   border-radius: 50px;
   padding: 10px 40px;
   text-transform: uppercase;
-  background-image: linear-gradient(120deg, #08569C 0%, #08569C 50%, #500AA3 50%);
+  background-image: linear-gradient(120deg, #40356e 0%, #40356e 50%, #9F9E41 50%);
   background-size: 245%;
   transition: all .4s;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); }

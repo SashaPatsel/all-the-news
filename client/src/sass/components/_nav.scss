@@ -1,9 +1,24 @@
 .nav {
-  background-color: $color-primary;
+  background-color: $color-secondary;
   color: white;
   height: 8rem;
+  display: flex;
+  justify-content: space-between;
 
-  &__nav {
+  &__logo {
+    margin-left: 3rem;
+
+    &--img {
+      width: auto;
+      height: 100%;
+    }
+  }
+
+  &__search {
+
+  }
+
+  &__auth {
 
   }
 }

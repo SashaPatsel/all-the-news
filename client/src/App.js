@@ -30,6 +30,8 @@ class App extends Component {
   }
 
 
+
+
   componentWillMount() {
     this.checkAuth();
     this.getNews();
@@ -228,8 +230,14 @@ class App extends Component {
 
 
       <div className="home__container--main">
-        <Nav>
 
+      
+
+        <Nav>
+        <div className="nav__logo">
+          <img alt="logo" src="assets/img/logo.png" className="nav__logo--img"/>
+        </div>
+        <div className="nav__search">
           <form autocomplete="off" onSubmit={this.getNews} className="autosuggest">
 
             <Autosuggest
@@ -242,7 +250,7 @@ class App extends Component {
             />
             <input type="submit" />
           </form>
-
+  </div>
           <div className="nav__auth">
             {this.state.isLoggedIn ? <div>
 
