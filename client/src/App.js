@@ -232,26 +232,28 @@ class App extends Component {
 
       <div className="home__container--main">
 
-      
+
 
         <Nav>
-        <div className="nav__logo">
-          <img alt="logo" src="assets/img/logo.png" className="nav__logo--img"/>
-        </div>
-        <div className="nav__search">
-          <form autocomplete="off" onSubmit={this.getNews} className="autosuggest">
+          <div className="nav__logo">
+            <img alt="logo" src="assets/img/logo.png" className="nav__logo--img" />
+          </div>
+          <div className="nav__search">
+            <form autocomplete="off" onSubmit={this.getNews} className="autosuggest">
 
-            <Autosuggest
-              suggestions={suggestions}
-              onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-              onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-              getSuggestionValue={this.getSuggestionValue}
-              renderSuggestion={this.renderSuggestion}
-              inputProps={inputProps}
-            />
-            <Submit text="submit" />
-          </form>
-  </div>
+              <Autosuggest
+                suggestions={suggestions}
+                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+                onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+                getSuggestionValue={this.getSuggestionValue}
+                renderSuggestion={this.renderSuggestion}
+                inputProps={inputProps}
+              />
+              <div className="nav__search--submit">
+                <Submit text="submit" />
+              </div>
+            </form>
+          </div>
           <div className="nav__auth">
             {this.state.isLoggedIn ? <div>
 
@@ -273,7 +275,7 @@ class App extends Component {
 
         <div className="home__container--stories">
           {this.state.stories ? this.state.stories.map(story => (
-            <Story headline={story.title} img={story.urlToImage} description={story.description} link={story.url}/>
+            <Story headline={story.title} img={story.urlToImage} description={story.description} link={story.url} />
           )) : <p>NEWS</p>
           }
 
