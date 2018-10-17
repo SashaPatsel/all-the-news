@@ -127,12 +127,21 @@ body {
   .react-autosuggest__container--open {
     position: absolute; }
 
-.react-autosuggest__container > * :not(.react-autosuggest__input) {
-  background-color: black;
-  border-bottom: solid white 1px;
-  z-index: 50;
-  position: relative;
+.react-autosuggest__suggestions-container {
+  background-color: #170D3D;
+  color: #C2C067;
+  width: 80%;
+  margin: auto;
+  z-index: 100;
+  position: relative; }
+
+.react-autosuggest__suggestions-list {
   list-style: none; }
+
+.react-autosuggest__suggestion {
+  padding: 5px; }
+  .react-autosuggest__suggestion:not(:last-child) {
+    border-bottom: solid white 1px; }
 
 .react-autosuggest__input {
   border-radius: 2rem;
@@ -166,9 +175,8 @@ body {
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4); }
 
 .input {
-  border-radius: 2px;
-  width: 10rem;
-  padding: 5px; }
+  border-radius: 2rem;
+  padding: 1rem; }
 
 .nav {
   background-color: #9F9E41;
