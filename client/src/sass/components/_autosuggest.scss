@@ -47,6 +47,11 @@
     &:not(:last-child) {
       border-bottom: solid white 1px;
     }
+
+    &--highlighted{
+      background-color: $color-secondary-light;
+      color: $color-primary-dark;
+    }
   }
 
   &__input {

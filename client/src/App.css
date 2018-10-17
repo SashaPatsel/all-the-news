@@ -142,6 +142,9 @@ body {
   padding: 5px; }
   .react-autosuggest__suggestion:not(:last-child) {
     border-bottom: solid white 1px; }
+  .react-autosuggest__suggestion--highlighted {
+    background-color: #C2C067;
+    color: #170D3D; }
 
 .react-autosuggest__input {
   border-radius: 2rem;
