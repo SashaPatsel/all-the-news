@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "node server.js",
+    "client": "node scripts/start-client.js",
+    "start": "node server/server.js",
+    "build": "yarn build --prefix client/",
+    "installDeps": "yarn && cd client && yarn"
   },
   "repository": {
     "type": "git",
