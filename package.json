@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "node server.js",
-    "client": "node scripts/start-client.js",
+    "client": "cd client && yarn start",
     "start": "node Server/server.js",
     "build": "yarn build --prefix client/",
     "installDeps": "yarn && cd client && yarn"

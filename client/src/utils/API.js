@@ -38,6 +38,7 @@ export default {
     });
     }, 
     getNews: function(source) {
+        console.log(source)
        return axios.get(`/api/news/${source}`)
     }
 }

@@ -157,10 +157,11 @@ class App extends Component {
 
 
     API.getNews(this.state.value).then(news => {
+      console.log(news)
       this.setState({
         stories: [...news.data]
       }, () => {
-        this.setState({ refresh: false })
+       this.setState({ refresh: false })
         console.log(this.state.stories)
       })
     })
