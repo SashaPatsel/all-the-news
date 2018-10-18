@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "node server.js",
     "client": "node scripts/start-client.js",
-    "start": "node server/server.js",
+    "start": "node Server/server.js",
     "build": "yarn build --prefix client/",
     "installDeps": "yarn && cd client && yarn"
   },
