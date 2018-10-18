@@ -129,7 +129,8 @@ body {
     background-color: #40356e;
     color: white;
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.27);
-    transform: translateY(-2px); }
+    transform: translateY(-2px);
+    cursor: pointer; }
   .auth-btn:active {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.27);
     transform: translateY(-2px); }
