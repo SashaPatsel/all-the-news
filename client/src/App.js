@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import logo from './beary2.png';
 
+import AuthBtn from './components/Button/AuthBtn'
 import Button from './components/Button'
 import Input from './components/Input'
 import Nav from "./components/Nav"
@@ -19,7 +20,7 @@ import API from "./utils/API";
 import Autosuggest from 'react-autosuggest';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faSearch} from '@fortawesome/free-solid-svg-icons'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 library.add(faSearch)
 
@@ -243,8 +244,8 @@ class App extends Component {
           <div className="nav__search">
             <form autocomplete="off" onSubmit={this.getNews} className="autosuggest">
               <div className="autosuggest__container">
-              <FontAwesomeIcon icon="search" className="nav__search--icon"/>
-              
+                <FontAwesomeIcon icon="search" className="nav__search--icon" />
+
                 <Autosuggest
                   suggestions={suggestions}
                   onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
@@ -262,15 +263,16 @@ class App extends Component {
           <div className="nav__auth">
             {this.state.isLoggedIn ? <div>
 
-              <Button float="none" onClick={this.handlelogout.bind(this)}>logout</Button>
-            </div> : <div className="nav__auth">
-                <form ref="submitForm" onClick={this.resetError.bind(this)}>
+              <AuthBtn float="none" onClick={this.handlelogout.bind(this)}>logout</AuthBtn>
+            </div> : <div >
+                <form className="nav__auth--form" ref="submitForm" onClick={this.resetError.bind(this)}>
                   <p id="form-error"></p>
                   <Input elementID="user-email" inputType="email" placeholder="email" img="email" required={true} size="3" />
                   <Input elementID="user-pw" inputType="password" placeholder="password" img="password" required={true} size="6" />
-                  <Button onClick={this.handleSubmitAccess.bind(this)} float="left">LOGIN</Button>
-                  <Button onClick={this.handleSubmitAccess.bind(this)} float="right">SIGNUP</Button>
-
+                  <div className="nav__auth--btns">
+                    <AuthBtn onClick={this.handleSubmitAccess.bind(this)} float="left">LOGIN</AuthBtn>
+                    <AuthBtn onClick={this.handleSubmitAccess.bind(this)} float="right">SIGNUP</AuthBtn>
+                  </div>
                 </form>
               </div>}
           </div>
@@ -280,7 +282,7 @@ class App extends Component {
 
         <div className="home__container--stories">
           {this.state.stories ? this.state.stories.map(story => (
-            <Story headline={story.title} img={story.urlToImage} description={story.description} link={story.url} />
+            <Story headline={story.title} img={story.urlToImage ? story.urlToImage : "assets/img/logo.png"} description={story.description} link={story.url} />
           )) : <p>NEWS</p>
           }
 

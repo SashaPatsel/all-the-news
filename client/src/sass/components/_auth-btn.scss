@@ -1,0 +1,31 @@
+.auth-btn {
+  font-size: 1rem;
+  color: $color-primary;
+  display: inline;
+  text-decoration: none;
+  border-bottom: 1px solid $color-primary;
+  padding: 3px;
+  // float: left;
+
+  &:link,
+  &:visited {
+    font-size: 1.5rem;
+    color: $color-primary;
+    display: inline;
+    text-decoration: none;
+    border-bottom: 1px solid $color-primary;
+    padding: 3px;
+  }
+
+  &--anim-trig:hover .auth-btn {
+    background-color: $color-primary;
+    color: white;
+    box-shadow: 0 1rem 2rem rgba(0,0,0,.27);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.27);
+    transform: translateY(-2px);
+  }
+}
